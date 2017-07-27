@@ -1,9 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MovieReviewSPA.Data;
 
 namespace MovieReviewSPA.web
 {
@@ -24,6 +27,11 @@ namespace MovieReviewSPA.web
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFramework()
+               .AddDbContext<MovieReviewDbContext>(options =>
+                    options.UseSqlServer(Configuration["Data:MovieReviewSPA:ConnectionString"],
+                        b => b.MigrationsAssembly("MovieReviewSPA.web")));
+
             // Add framework services.
             services.AddMvc();
         }
