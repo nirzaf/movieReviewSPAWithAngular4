@@ -7,6 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using MovieReviewSPA.Data;
+using MovieReviewSPA.Data.SampleData;
 
 namespace MovieReviewSPA.web
 {
@@ -34,10 +35,12 @@ namespace MovieReviewSPA.web
 
             // Add framework services.
             services.AddMvc();
+            //Initiating Seed Data
+            services.AddTransient<InitialData>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, InitialData seedDbContext)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -66,6 +69,9 @@ namespace MovieReviewSPA.web
                     name: "spa-fallback",
                     defaults: new { controller = "Home", action = "Index" });
             });
+            //Initiating from here
+            seedDbContext.SeedData();
+
         }
     }
 }
