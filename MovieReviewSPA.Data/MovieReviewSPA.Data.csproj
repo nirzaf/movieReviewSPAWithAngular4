@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MovieReviewSPA.Data.Contracts\MovieReviewSPA.Data.Contracts.csproj" />
     <ProjectReference Include="..\MovieReviewSPA.Model\MovieReviewSPA.Model.csproj" />
   </ItemGroup>
 
