@@ -1,28 +1,22 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { sharedConfig } from './app.module.shared';
+import { MoviesComponent } from './components/movies/movies.component';
 
-import { AppComponent } from './components/app/app.component'
-import { NavMenuComponent } from './components/navmenu/navmenu.component';
-import { HomeComponent } from './components/home/home.component';
-import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
-import { CounterComponent } from './components/counter/counter.component';
-
-export const sharedConfig: NgModule = {
-    bootstrap: [ AppComponent ],
-    declarations: [
-        AppComponent,
-        NavMenuComponent,
-        CounterComponent,
-        FetchDataComponent,
-        HomeComponent
-    ],
+@NgModule({
+    bootstrap: sharedConfig.bootstrap,
+    declarations: [...sharedConfig.declarations, MoviesComponent],
     imports: [
-        RouterModule.forRoot([
-            { path: '', redirectTo: 'home', pathMatch: 'full' },
-            { path: 'home', component: HomeComponent },
-            { path: 'counter', component: CounterComponent },
-            { path: 'fetch-data', component: FetchDataComponent },
-            { path: '**', redirectTo: 'home' }
-        ])
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        ...sharedConfig.imports
+    ],
+    providers: [
+        { provide: 'ORIGIN_URL', useValue: location.origin }
     ]
-};
+})
+export class AppModule {
+}
