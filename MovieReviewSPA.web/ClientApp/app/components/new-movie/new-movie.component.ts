@@ -1,7 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import {NgForm} from '@angular/forms';
-/*import { MoviesService } from '../../services/movies.service';*/
-/*import { movie } from './../../models/movie';*/
+import { MoviesService } from '../../services/movies.service';
+import { movie } from './../../models/movie';
 
 @Component({
     selector: 'app-new-movie',
@@ -11,17 +11,19 @@ import {NgForm} from '@angular/forms';
 export class NewMovieComponent implements OnInit {
 
    
-   /* movie: movie ={
+    movie: movie ={
         id: 0,
         directorName: '',
         movieName: '',
         releaseYear:''
-    };*/
-    constructor() { }
+    };
+    constructor(private moviesService: MoviesService) { }
     ngOnInit() {
     }
 
     onSubmit(form:NgForm) {
-        console.log(form);
+        console.log(form.value);
+        this.moviesService.createMovie(form.value)
+            .subscribe(x => console.log(x));
     }
 }
