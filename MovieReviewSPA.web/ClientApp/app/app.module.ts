@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 import { sharedConfig } from './app.module.shared';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesService } from './services/movies.service';
+import { NewMovieComponent } from './components/new-movie/new-movie.component';
+
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
-    declarations: [...sharedConfig.declarations, MoviesComponent],
+    declarations: [...sharedConfig.declarations, MoviesComponent, NewMovieComponent],
     imports: [
         BrowserModule,
         FormsModule,

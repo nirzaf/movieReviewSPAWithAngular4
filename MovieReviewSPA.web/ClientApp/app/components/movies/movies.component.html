@@ -1,27 +1,29 @@
 <h3>Movies List</h3>
-<div class="container">
-    <div class="row">
+<form>
+    <div class="container">
         <div class="row">
-            <div class="col-xs-12 col-sm-9 col-md-9">
-                <div class="list-group">
-                    <div class="list-group-item">
-                        <div class="row-content" *ngFor="let m of movies">
-                            <div class="list-group-item-heading">
-                                <a href="#" title="movieName">
-                                    <small>Movie Name:- {{m.movieName}}</small>
-                                </a>
+            <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-9">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="row-content" *ngFor="let m of movies">
+                                <div class="list-group-item-heading">
+                                    <a href="#" title="movieName">
+                                        <small>Movie Name:- {{m.movieName}}</small>
+                                    </a>
+                                </div>
+                                <small>
+                                    <i class="glyphicon glyphicon-time"></i> Release Year:- {{m.releaseYear}}
+                                    <i class="glyphicon glyphicon-user"></i> Director Name:- {{m.directorName}}
+                                    <br>
+                                    <span class="explore"><i class="glyphicon glyphicon-th"></i> <a href="#">Movie Reviews:- {{m.noOfReviews}} </a></span>
+                                </small>
+                                <hr>
                             </div>
-                            <small>
-                                <i class="glyphicon glyphicon-time"></i> Release Year:- {{m.releaseYear}}
-                                <i class="glyphicon glyphicon-user"></i> Director Name:- {{m.directorName}}
-                                <br>
-                                <span class="explore"><i class="glyphicon glyphicon-th"></i> <a href="#">Movie Reviews:- {{m.noOfReviews}} </a></span>
-                            </small>
-                            <hr>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</form>

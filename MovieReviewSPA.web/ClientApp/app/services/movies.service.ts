@@ -13,4 +13,9 @@ export class MoviesService {
             //Once, we get the response back, it has to get mapped to json
             .map(res => res.json());
     }
+
+    createMovie(movie) {
+        return this.http.post('/api/movies', movie)
+            .map(res => res.json());
+    }
 }
