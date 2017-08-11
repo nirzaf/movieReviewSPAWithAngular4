@@ -3,15 +3,15 @@
         <form (ngSubmit)="onSubmit(f)"  #f="ngForm" role="form" class="col-md-9 go-right">
             <h2>Enter New Movie</h2>
              <div class="form-group">
-                <input id="movieName" name="movieName" type="text" class="form-control" required ngModel>
+                <input id="movieName" name="movieName" type="text" class="form-control" required [(ngModel)]="movie.movieName">
                 <label for="movieName">Movie Name</label>
             </div>
             <div class="form-group">
-                <input id="directorName" name="directorName" type="text" class="form-control" required ngModel>
+                <input id="directorName" name="directorName" type="text" class="form-control" required [(ngModel)]="movie.directorName">
                 <label for="directorName">Director Name</label>
             </div>
             <div class="form-group">
-                <input id="releaseYear" name="releaseYear" type="text" class="form-control" required ngModel>
+                <input id="releaseYear" name="releaseYear" type="text" class="form-control" required [(ngModel)]="movie.releaseYear">
                 <label for="releaseYear">Release Year</label>
             </div>
             <p class="bg-success" style="padding:10px;margin-top:20px;clear:both"> <button type="submit" class="btn btn-primary">Submit</button></p>
