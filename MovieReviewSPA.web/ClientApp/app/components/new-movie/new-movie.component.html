@@ -3,19 +3,19 @@
         <form (ngSubmit)="onSubmit(f)" #f="ngForm" role="form" class="col-md-9 go-right">
             <h2>Enter New Movie</h2>
             <div class="form-group">
-                <input id="movieName" name="movieName" type="text" class="form-control" required [(ngModel)]="movie.movieName" #movie="ngModel">
+                <input id="movieName" name="movieName" type="text" class="form-control" required [(ngModel)]="movie.movieName" #movieName="ngModel">
                 <label for="movieName">Movie Name</label>
-                <div class="alert alert-danger" *ngIf="movie.touched && !movie.valid">Please specify the Movie Name!</div>
+                <div class="alert alert-danger" *ngIf="movieName.touched && !movieName.valid">Please specify the Movie Name!</div>
             </div>
             <div class="form-group">
-                <input id="directorName" name="directorName" type="text" class="form-control" required [(ngModel)]="movie.directorName" #director="ngModel">
+                <input id="directorName" name="directorName" type="text" class="form-control" required [(ngModel)]="movie.directorName" #directorName="ngModel">
                 <label for="directorName">Director Name</label>
-                <div class="alert alert-danger" *ngIf="director.touched && !director.valid">Please specify the Director Name!</div>
+                <div class="alert alert-danger" *ngIf="directorName.touched && !directorName.valid">Please specify the Director Name!</div>
             </div>
             <div class="form-group">
-                <input id="releaseYear" name="releaseYear" type="text" class="form-control" required [(ngModel)]="movie.releaseYear" #release="ngModel">
+                <input id="releaseYear" name="releaseYear" type="text" class="form-control" required [(ngModel)]="movie.releaseYear" #releaseYear="ngModel">
                 <label for="releaseYear">Release Year</label>
-                <div class="alert alert-danger" *ngIf="release.touched && !release.valid">Please specify the Release Year!</div>
+                <div class="alert alert-danger" *ngIf="releaseYear.touched && !releaseYear.valid">Please specify the Release Year!</div>
             </div>
             <p class="bg-success" style="padding:10px;margin-top:20px;clear:both"> <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button></p>
         </form>
