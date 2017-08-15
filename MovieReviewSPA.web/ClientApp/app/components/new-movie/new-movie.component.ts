@@ -1,3 +1,4 @@
+import * as Raven from 'raven-js';
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MoviesService } from '../../services/movies.service';
@@ -34,7 +35,8 @@ export class NewMovieComponent implements OnInit {
                     timeout: 5000
                 });
             },
-                err => {
+            err => {
+                Raven.captureException(err.originalError || err);
                    this.toastyService.error({
                         title: 'Error',
                         msg: 'An unexpected error occured while creating new Movie!',

@@ -62,7 +62,6 @@ namespace MovieReviewSPA.web.Controllers.API
         [HttpPost("")]
         public int Post([FromBody]Movie movie)
         {
-            UOW.Movies.Add(movie);
             UOW.Commit();
             return Response.StatusCode = (int)HttpStatusCode.Created;
         }

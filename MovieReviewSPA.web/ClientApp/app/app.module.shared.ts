@@ -1,3 +1,4 @@
+import * as Raven from 'raven-js';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
@@ -9,6 +10,10 @@ import { FetchDataComponent } from './components/fetchdata/fetchdata.component';
 import { CounterComponent } from './components/counter/counter.component';
 import { MoviesComponent } from './components/movies/movies.component';
 import { NewMovieComponent } from './components/new-movie/new-movie.component';
+
+Raven
+    .config('https://7579eaef4acc46bab3ffd87d3d85f3ea@sentry.io/203240')
+    .install();
 
 export const sharedConfig: NgModule = {
     bootstrap: [ AppComponent ],
