@@ -18,7 +18,8 @@
                                     <br>
                                     <span class="btn btn-info"><i class="glyphicon glyphicon-th"></i> <a href="#" style="color: black">Movie Reviews:- {{m.noOfReviews}} </a></span> 
                                     <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a  [routerLink]="['/movies/', m.id]" style="color: black">Edit Movie </a></span>
-                                    <span class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> <a href="#" style="color: black">Delete Movie </a></span>
+                                   <!--  <span class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> <a href="#" style="color: black">Delete Movie </a></span>-->
+                                   <button class="btn btn-danger" style="color: black" type="button" (click)="delete(m.id)"><i class="glyphicon glyphicon-remove"></i> Delete Movie</button>
                                 </small>
                                 <hr>
                             </div>

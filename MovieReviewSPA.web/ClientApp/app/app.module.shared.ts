@@ -44,4 +44,5 @@ export const sharedConfig: NgModule = {
         ])
     ],
     providers: [MoviesService]
+    
 };

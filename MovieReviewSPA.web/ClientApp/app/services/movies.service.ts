@@ -27,4 +27,8 @@ export class MoviesService {
         return this.http.put('/api/movies/', movie)
             .map(res => res.json());
     }
+    deleteMovie(id) {
+        return this.http.delete('/api/movies/' + id)
+            .map(res => res.json());
+    }
 }
