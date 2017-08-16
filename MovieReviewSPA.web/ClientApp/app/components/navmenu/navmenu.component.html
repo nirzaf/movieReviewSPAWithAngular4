@@ -17,7 +17,7 @@
                         <span class='glyphicon glyphicon-home'></span> Home
                     </a>
                 </li>
-                <li [routerLinkActive]="['link-active']">
+                <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}">
                     <a [routerLink]="['/movies']">
                         <span class='glyphicon glyphicon-film'></span> Movies
                     </a>

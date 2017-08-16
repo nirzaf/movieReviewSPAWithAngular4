@@ -6,11 +6,12 @@ import { sharedConfig } from './app.module.shared';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesService } from './services/movies.service';
 import { NewMovieComponent } from './components/new-movie/new-movie.component';
+import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
-    declarations: [...sharedConfig.declarations, MoviesComponent, NewMovieComponent],
+    declarations: [...sharedConfig.declarations, MoviesComponent, NewMovieComponent, EditMovieComponent],
     imports: [
         BrowserModule,
         FormsModule,
