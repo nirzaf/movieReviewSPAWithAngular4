@@ -23,4 +23,8 @@ export class MoviesService {
         return this.http.get('/api/movies/' + id)
             .map(res => res.json());
     }
+    updateMovie(movie) {
+        return this.http.put('/api/movies/', movie)
+            .map(res => res.json());
+    }
 }
