@@ -1,7 +1,6 @@
 import * as Raven from 'raven-js';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import { Movie } from './../../models/movie';
 import {  Router } from '@angular/router';
 import { ToastyService } from "ng2-toasty";
 

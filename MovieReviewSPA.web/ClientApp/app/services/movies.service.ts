@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -6,10 +6,10 @@ import 'rxjs/add/operator/map';
 export class MoviesService {
 
     //In order to use any injectable, pass it via ctor
-    constructor(private http:Http) { }
+    constructor(private http: Http, @Inject('ORIGIN_URL') private originUrl: string) { }
 
     getMovies() {
-        return this.http.get('/api/movies')
+        return this.http.get(this.originUrl+'/api/movies')
             //Once, we get the response back, it has to get mapped to json
             .map(res => res.json());
     }

@@ -1,3 +1,7 @@
+<br/>
+<p>
+    <a [routerLink]="['/movies/new']" class="btn btn-primary">Create New Movie</a>
+</p>
 <h3>Movies List</h3>
 <form>
     <div class="container">
@@ -18,8 +22,7 @@
                                     <br>
                                     <span class="btn btn-info"><i class="glyphicon glyphicon-th"></i> <a href="#" style="color: black">Movie Reviews:- {{m.noOfReviews}} </a></span> 
                                     <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a  [routerLink]="['/movies/', m.id]" style="color: black">Edit Movie </a></span>
-                                   <!--  <span class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> <a href="#" style="color: black">Delete Movie </a></span>-->
-                                   <button class="btn btn-danger" style="color: black" type="button" (click)="delete(m.id)"><i class="glyphicon glyphicon-remove"></i> Delete Movie</button>
+                                    <button class="btn btn-danger" data-toggle="confirmation" style="color: black" type="button" (click)="delete(m.id)"><i class="glyphicon glyphicon-remove"></i> Delete Movie</button>
                                 </small>
                                 <hr>
                             </div>
