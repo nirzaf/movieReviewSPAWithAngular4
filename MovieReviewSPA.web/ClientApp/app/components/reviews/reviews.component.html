@@ -1,0 +1,34 @@
+<br />
+<p>
+    <a [routerLink]="['/reviews/new']" class="btn btn-primary">Post New review</a>
+</p>
+<h3>Reviews List</h3>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-9">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="row-content" *ngFor="let r of reviews">
+                                <div class="list-group-item-heading">
+                                    <a href="#" title="reviewerName">
+                                        <small>Reviewer Name:- {{r.reviewerName}}</small>
+                                    </a>
+                                </div>
+                                <small>
+                                    <i class="glyphicon glyphicon-time"></i> Reviewer Comments:- {{r.reviewerComments}}
+                                    <i class="glyphicon glyphicon-user"></i> Reviewer Rating:- {{r.reviewerRating}}
+                                    <br>
+                                    <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a [routerLink]="['/reviews/', r.id]" style="color: black">Edit Review </a></span>
+                                    <button class="btn btn-danger" data-toggle="confirmation" style="color: black" type="button" (click)="delete(r.id)"><i class="glyphicon glyphicon-remove"></i> Delete Review</button>
+                                </small>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

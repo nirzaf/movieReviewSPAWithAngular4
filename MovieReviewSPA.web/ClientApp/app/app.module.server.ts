@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
 import { sharedConfig } from './app.module.shared';
 import { MoviesService } from './services/movies.service';
+import { ReviewsService } from './services/reviews.service';
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
@@ -10,7 +11,7 @@ import { MoviesService } from './services/movies.service';
         ServerModule,
         ...sharedConfig.imports
     ],
-    providers: [MoviesService]
+    providers: [MoviesService, ReviewsService]
 })
 export class AppModule {
 }
