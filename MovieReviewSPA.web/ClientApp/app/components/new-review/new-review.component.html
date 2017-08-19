@@ -8,16 +8,20 @@
                 <div class="alert alert-danger" *ngIf="reviewerName.touched && !reviewerName.valid">Please specify the Reviewer Name!</div>
             </div>
             <div class="form-group">
-                <input id="directorName" name="directorName" type="text" class="form-control" required [(ngModel)]="movie.directorName" #directorName="ngModel">
-                <label for="directorName">Director Name</label>
-                <div class="alert alert-danger" *ngIf="directorName.touched && !directorName.valid">Please specify the Director Name!</div>
+                <textarea id="reviewerComments" name="reviewerComments" type="text" class="form-control" required [(ngModel)]="review.reviewerComments" #reviewerComments="ngModel"></textarea>
+                <label for="reviewerComments">Reviewer Comments</label>
+                <div class="alert alert-danger" *ngIf="reviewerComments.touched && !reviewerComments.valid">Please specify the Reviewer Comments!</div>
             </div>
             <div class="form-group">
-                <input id="releaseYear" name="releaseYear" type="text" class="form-control" required [(ngModel)]="movie.releaseYear" #releaseYear="ngModel">
-                <label for="releaseYear">Release Year</label>
-                <div class="alert alert-danger" *ngIf="releaseYear.touched && !releaseYear.valid">Please specify the Release Year!</div>
+                <input id="reviewerRating" name="reviewerRating" type="text" class="form-control" required [(ngModel)]="review.reviewerRating" #reviewerRating="ngModel">
+                <label for="reviewerRating">Reviewer Rating</label>
+                <div class="alert alert-danger" *ngIf="reviewerRating.touched && !reviewerRating.valid">Please specify the Reviewer Rating!</div>
             </div>
-            <p class="bg-success" style="padding:10px;margin-top:20px;clear:both"> <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button></p>
+            <p class="bg-success" style="padding:10px;margin-top:20px;clear:both">
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+                <a [routerLink]="['/movies/']" class="btn btn-info"><i class="glyphicon glyphicon-backward"></i> Back</a>
+            </p>
+
         </form>
     </div>
 </div>

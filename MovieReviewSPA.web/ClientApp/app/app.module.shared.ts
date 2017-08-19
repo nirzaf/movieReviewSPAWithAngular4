@@ -44,7 +44,7 @@ export const sharedConfig: NgModule = {
             { path: 'movies/new', component: NewMovieComponent },
             { path: 'movies/:id', component: EditMovieComponent },
             { path: 'reviews/:id', component: ReviewsComponent },
-            { path: 'reviews/new', component: NewReviewComponent },
+            { path: 'reviews/new/:id', component: NewReviewComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },

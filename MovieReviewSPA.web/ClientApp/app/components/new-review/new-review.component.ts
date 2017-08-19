@@ -1,4 +1,9 @@
+import * as Raven from 'raven-js';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { ReviewsService } from '../../services/reviews.service';
+import { Review } from './../../models/review';
+import { ToastyService } from "ng2-toasty";
 
 @Component({
   selector: 'app-new-review',
@@ -7,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NewReviewComponent implements OnInit {
 
-  constructor() { }
+  review:Review=new Review();
+  constructor(private reviewsService: ReviewsService, private toastyService: ToastyService) { }
 
   ngOnInit() {
   }
