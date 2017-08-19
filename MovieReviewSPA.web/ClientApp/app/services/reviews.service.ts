@@ -21,4 +21,13 @@ export class ReviewsService {
         return this.http.get('/api/moviereviews/GetByReviewId?id=' +id)
             .map(res => res.json());
     }
+
+    updateReview(review) {
+        return this.http.put('/api/moviereviews/', review)
+            .map(res => res.json());
+    }
+    deleteReview(id) {
+        return this.http.delete('/api/moviereviews/' + id)
+            .map(res => res.json());
+    }
 }

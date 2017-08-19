@@ -48,7 +48,7 @@ export class EditMovieComponent implements OnInit {
                             showClose: true,
                             timeout: 5000
                         });
-                        this.router.navigate(['/movies'])
+                        this.router.navigate(['/movies']);
                     },
                     err => {
                         Raven.captureException(err.originalError || err);

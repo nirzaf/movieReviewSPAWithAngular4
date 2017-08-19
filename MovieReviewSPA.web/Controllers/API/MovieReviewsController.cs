@@ -72,7 +72,6 @@ namespace MovieReviewSPA.Web.Controllers.API
 
         //Delete a review
         //Delete /api/MovieReviews/5
-        [Authorize]
         [HttpDelete("{id}")]
         public HttpResponseMessage Delete(int id)
         {

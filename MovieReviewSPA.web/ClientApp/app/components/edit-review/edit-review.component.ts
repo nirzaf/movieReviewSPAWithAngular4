@@ -39,4 +39,31 @@ export class EditReviewComponent implements OnInit {
         }
   }
 
+    onSubmit() {
+        if (this.review.id) {
+            this.reviewsService.updateReview(this.review)
+                .subscribe(x => {
+                        console.log(x);
+                        this.toastyService.success({
+                            title: 'Success',
+                            msg: 'Review Updated!',
+                            theme: 'bootstrap',
+                            showClose: true,
+                            timeout: 5000
+                        });
+                        this.router.navigate(['/movies']);
+                    },
+                    err => {
+                        Raven.captureException(err.originalError || err);
+                        this.toastyService.error({
+                            title: 'Error',
+                            msg: 'An unexpected error while updating the record!',
+                            theme: 'bootstrap',
+                            showClose: true,
+                            timeout: 5000
+                        });
+                    });
+        }
+
+    }
 }

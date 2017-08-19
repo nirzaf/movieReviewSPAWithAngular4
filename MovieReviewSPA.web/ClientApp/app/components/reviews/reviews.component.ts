@@ -28,9 +28,40 @@ export class ReviewsComponent implements OnInit {
     ngOnInit() {
         this.reviewsService.getReviewById(this.review.movieId).subscribe(reviews => {
             this.reviews = reviews;
-            console.log("Reviews:- ", this.reviews);
+            this.toastyService.success({
+                title: 'Success',
+                msg: 'Reviewes fetched successfully!',
+                theme: 'bootstrap',
+                showClose: true,
+                timeout: 5000
+            });
         });
 
-  }
+    }
+    delete(id) {
+        if (confirm("Are you sure, you want delete review?")) {
+            this.reviewsService.deleteReview(id)
+                .subscribe(x => {
+                        this.toastyService.success({
+                            title: 'Success',
+                            msg: 'Review Deleted!',
+                            theme: 'bootstrap',
+                            showClose: true,
+                            timeout: 5000
+                        });
+                        this.router.navigate(['/movies']);
+                    },
+                    err => {
+                        Raven.captureException(err.originalError || err);
+                        this.toastyService.error({
+                            title: 'Error',
+                            msg: 'An unexpected error while deleting the record!',
+                            theme: 'bootstrap',
+                            showClose: true,
+                            timeout: 5000
+                        });
+                    });
+        }
+    }
 
 }
