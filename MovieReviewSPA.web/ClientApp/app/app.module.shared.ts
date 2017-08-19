@@ -12,8 +12,10 @@ import { MoviesComponent } from './components/movies/movies.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
+import { NewReviewComponent } from './components/new-review/new-review.component';
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
+
 
 Raven
     .config('https://7579eaef4acc46bab3ffd87d3d85f3ea@sentry.io/203240')
@@ -30,7 +32,8 @@ export const sharedConfig: NgModule = {
         MoviesComponent,
         NewMovieComponent,
         EditMovieComponent,
-        ReviewsComponent
+        ReviewsComponent,
+        NewReviewComponent
     ],
     imports: [
         FormsModule,
@@ -41,6 +44,7 @@ export const sharedConfig: NgModule = {
             { path: 'movies/new', component: NewMovieComponent },
             { path: 'movies/:id', component: EditMovieComponent },
             { path: 'reviews/:id', component: ReviewsComponent },
+            { path: 'reviews/new', component: NewReviewComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },
             { path: 'fetch-data', component: FetchDataComponent },

@@ -10,11 +10,18 @@ import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
+import { NewReviewComponent } from './components/new-review/new-review.component';
 
 
 @NgModule({
     bootstrap: sharedConfig.bootstrap,
-    declarations: [...sharedConfig.declarations, MoviesComponent, NewMovieComponent, EditMovieComponent, NotFoundComponent, ReviewsComponent],
+    declarations: [...sharedConfig.declarations,
+        MoviesComponent,
+        NewMovieComponent,
+        EditMovieComponent,
+        NotFoundComponent,
+        ReviewsComponent,
+        NewReviewComponent],
     imports: [
         BrowserModule,
         FormsModule,
