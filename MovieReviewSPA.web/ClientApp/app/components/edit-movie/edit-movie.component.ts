@@ -25,6 +25,7 @@ export class EditMovieComponent implements OnInit {
             this.moviesService.getMovie(this.movie.id)
                 .subscribe(m => {
                     this.movie = m;
+                        console.log("Movie:-", this.movie);
                 },
                 err => {
                     if (err.status == 404) {

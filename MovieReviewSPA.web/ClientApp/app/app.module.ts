@@ -11,6 +11,7 @@ import { EditMovieComponent } from './components/edit-movie/edit-movie.component
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
+import { EditReviewComponent } from './components/edit-review/edit-review.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { NewReviewComponent } from './components/new-review/new-review.component
         EditMovieComponent,
         NotFoundComponent,
         ReviewsComponent,
-        NewReviewComponent],
+        NewReviewComponent,
+        EditReviewComponent],
     imports: [
         BrowserModule,
         FormsModule,

@@ -13,6 +13,7 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
+import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
 
@@ -33,7 +34,8 @@ export const sharedConfig: NgModule = {
         NewMovieComponent,
         EditMovieComponent,
         ReviewsComponent,
-        NewReviewComponent
+        NewReviewComponent,
+        EditReviewComponent
     ],
     imports: [
         FormsModule,
@@ -44,6 +46,7 @@ export const sharedConfig: NgModule = {
             { path: 'movies/new', component: NewMovieComponent },
             { path: 'movies/:id', component: EditMovieComponent },
             { path: 'reviews/:id', component: ReviewsComponent },
+            { path: 'editreview/:id', component: EditReviewComponent },
             { path: 'reviews/new/:id', component: NewReviewComponent },
             { path: 'home', component: HomeComponent },
             { path: 'counter', component: CounterComponent },

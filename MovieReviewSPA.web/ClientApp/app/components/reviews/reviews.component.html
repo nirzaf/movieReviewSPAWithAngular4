@@ -21,7 +21,7 @@
                                     <i class="glyphicon glyphicon-time"></i> Reviewer Comments:- {{r.reviewerComments}}
                                     <i class="glyphicon glyphicon-user"></i> Reviewer Rating:- {{r.reviewerRating}}
                                     <br>
-                                    <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a [routerLink]="['/reviews/', r.id]" style="color: black">Edit Review </a></span>
+                                    <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a [routerLink]="['/editreview/', r.id]" style="color: black">Edit Review </a></span>
                                     <button class="btn btn-danger" data-toggle="confirmation" style="color: black" type="button" (click)="delete(r.id)"><i class="glyphicon glyphicon-remove"></i> Delete Review</button>
                                 </small>
                                 <hr>

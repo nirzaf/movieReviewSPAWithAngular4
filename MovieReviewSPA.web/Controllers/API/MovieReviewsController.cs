@@ -31,6 +31,12 @@ namespace MovieReviewSPA.Web.Controllers.API
             return UOW.MovieReviews.GetAll().Where(m => m.MovieId == Id);
         }
 
+        [HttpGet("[action]")]
+        public MovieReview GetByReviewId(int id)
+        {
+            return UOW.MovieReviews.GetAll().FirstOrDefault(m => m.Id == id);
+        }
+
         // /api/MovieReviews/getbyreviewername?value=rahul
         [HttpGet("[action]")]
         public MovieReview GetByReviewerName(string value)
