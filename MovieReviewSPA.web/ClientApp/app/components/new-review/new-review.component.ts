@@ -2,7 +2,9 @@ import * as Raven from 'raven-js';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ReviewsService } from '../../services/reviews.service';
+import { MoviesService } from '../../services/movies.service';
 import { Review } from './../../models/review';
+import { Movie } from './../../models/movie';
 import { ToastyService } from "ng2-toasty";
 import { Router, ActivatedRoute } from '@angular/router';   
 
@@ -13,8 +15,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class NewReviewComponent implements OnInit {
 
-  review:Review=new Review();
-  constructor(private reviewsService: ReviewsService,
+    review: Review = new Review();
+    movie: Movie = new Movie();
+    constructor(private reviewsService: ReviewsService,
+      private moviesService: MoviesService,
       private toastyService: ToastyService,
       private route: ActivatedRoute,
       private router: Router) {
@@ -24,7 +28,18 @@ export class NewReviewComponent implements OnInit {
       });
   }
 
-  ngOnInit() {
+    ngOnInit() {
+        if (this.review.movieId) {
+            this.moviesService.getMovie(this.review.movieId)
+                .subscribe(m => {
+                        this.movie = m;
+                    },
+                    err => {
+                        if (err.status == 404) {
+                            this.router.navigate(['/movies']);
+                        }
+                    });
+        }
   }
     onSubmit(form: NgForm) {
         var formData = this.review;
