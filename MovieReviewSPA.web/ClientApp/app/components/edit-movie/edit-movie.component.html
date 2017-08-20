@@ -17,7 +17,10 @@
                 <label for="releaseYear">Release Year</label>
                 <div class="alert alert-danger" *ngIf="releaseYear.touched && !releaseYear.valid">Please specify the Release Year!</div>
             </div>
-            <p class="bg-success" style="padding:10px;margin-top:20px;clear:both"> <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button></p>
+            <p class="bg-success" style="padding: 10px; margin-top: 20px; clear: both">
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+                <a [routerLink]="['/movies/']" class="btn btn-info"><i class="glyphicon glyphicon-backward"></i> Back</a>
+            </p>
         </form>
     </div>
 </div>

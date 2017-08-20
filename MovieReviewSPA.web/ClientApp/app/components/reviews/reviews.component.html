@@ -4,6 +4,16 @@
     <a [routerLink]="['/movies/']" class="btn btn-info"><i class="glyphicon glyphicon-backward"></i> Back</a>
 </p>
 <h3>Reviews List</h3>
+<div class="well">
+    <div class="form-group">
+        <label for="reviewerRating">Filter Reviews by Rating</label>
+        <select id="reviewerRating" class="form-control" [(ngModel)]="filter.reviewerRating" (change)="onDropdownChange()">
+            <option value=""></option>
+            <option *ngFor="let r of reviews" value="{{r.reviewerRating}}">{{r.reviewerRating}}</option>
+        </select>
+    </div>
+    <button class="btn btn-danger" (click)="onResetFilter()">Reset</button>
+</div>
 <form>
     <div class="container">
         <div class="row">

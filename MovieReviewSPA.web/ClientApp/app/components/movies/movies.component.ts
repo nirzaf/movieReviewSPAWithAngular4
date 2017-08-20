@@ -12,7 +12,10 @@ import { ToastyService } from "ng2-toasty";
 export class MoviesComponent implements OnInit {
 
     movies;
+    allMovies;
     movie: {};
+    filter:any={};
+
     constructor(
         private moviesService: MoviesService, private router: Router, private toastyService: ToastyService) {
 
@@ -20,7 +23,7 @@ export class MoviesComponent implements OnInit {
 
     ngOnInit() {
         this.moviesService.getMovies().subscribe(movies => {
-            this.movies = movies;
+            this.movies = this.allMovies= movies;
             console.log("Movies:- ", this.movies);
         });
     }
@@ -54,5 +57,16 @@ export class MoviesComponent implements OnInit {
                         });
                     });
         }
+    }
+    onDropdownChange() {
+        var movies = this.allMovies;
+        if (this.filter.id) {
+            movies = movies.filter(m => m.id == this.filter.id);
+        }
+        this.movies = movies;
+    }
+    onResetFilter() {
+        this.filter = {};
+        this.onDropdownChange();
     }
 }

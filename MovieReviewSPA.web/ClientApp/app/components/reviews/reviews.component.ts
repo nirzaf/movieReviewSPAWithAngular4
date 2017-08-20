@@ -14,7 +14,9 @@ import { Review } from './../../models/review';
 export class ReviewsComponent implements OnInit {
 
     reviews;
-    review: Review= new Review();
+    review: Review = new Review();
+    allReviews;
+    filter: any = {};
 
     constructor(private reviewsService: ReviewsService,
         private route: ActivatedRoute,
@@ -27,7 +29,7 @@ export class ReviewsComponent implements OnInit {
 
     ngOnInit() {
         this.reviewsService.getReviewById(this.review.movieId).subscribe(reviews => {
-            this.reviews = reviews;
+            this.reviews = this.allReviews= reviews;
             this.toastyService.success({
                 title: 'Success',
                 msg: 'Reviewes fetched successfully!',
@@ -62,6 +64,18 @@ export class ReviewsComponent implements OnInit {
                         });
                     });
         }
+    }
+
+    onDropdownChange() {
+        var reviews = this.allReviews;
+        if (this.filter.reviewerRating) {
+            reviews = reviews.filter(r => r.reviewerRating == this.filter.reviewerRating);
+        }
+        this.reviews = reviews;
+    }
+    onResetFilter() {
+        this.filter = {};
+        this.onDropdownChange();
     }
 
 }
