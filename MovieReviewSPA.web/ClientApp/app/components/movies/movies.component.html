@@ -43,3 +43,4 @@
         </div>
     </div>
 </form>
+<pager [total-items]="totalMovies" [page-size]="3" (page-changed)="onPageChange($event)"></pager>

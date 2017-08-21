@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -22,9 +21,9 @@ namespace MovieReviewSPA.web.Controllers.API
 
         // GET api/movies
         [HttpGet("")]
-        public IQueryable Get()
+        public IQueryable Get(Pager movieQuery)
         {
-            var model = UOW.Movies.GetAll().OrderByDescending(m => m.Reviews.Count())
+            var model = UOW.Movies.GetAll(movieQuery).OrderByDescending(m => m.Reviews.Count())
                 .Select(m => new MovieViewModel
                 {
                     Id = m.Id,

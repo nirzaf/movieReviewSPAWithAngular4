@@ -1,7 +1,7 @@
 import * as Raven from 'raven-js';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ToastyService } from "ng2-toasty";
 
 @Component({
@@ -14,7 +14,13 @@ export class MoviesComponent implements OnInit {
     movies;
     allMovies;
     movie: {};
-    filter:any={};
+    filter: any = {};
+    totalMovies;
+    query: any = {
+        pageSize: 3,
+        allMovies: 10
+    }
+    queryResult: any = {};
 
     constructor(
         private moviesService: MoviesService, private router: Router, private toastyService: ToastyService) {
@@ -22,9 +28,13 @@ export class MoviesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.moviesService.getMovies().subscribe(movies => {
-            this.movies = this.allMovies= movies;
+        this.moviesService.getMovies(this.query).subscribe(movies => {
+            this.movies = this.allMovies = movies;
             console.log("Movies:- ", this.movies);
+        });
+        this.moviesService.getMoviesCount().subscribe(movies => {
+            this.totalMovies = movies.length;
+            console.log("Total Movies:- ", this.totalMovies);
         });
     }
 
@@ -58,6 +68,10 @@ export class MoviesComponent implements OnInit {
                     });
         }
     }
+    private populateMovies() {
+        this.moviesService.getMovies(this.query)
+            .subscribe(result => this.movies = result);
+    }
     onDropdownChange() {
         var movies = this.allMovies;
         if (this.filter.id) {
@@ -68,5 +82,10 @@ export class MoviesComponent implements OnInit {
     onResetFilter() {
         this.filter = {};
         this.onDropdownChange();
+    }
+
+    onPageChange(page) {
+        this.query.page = page;
+        this.populateMovies();
     }
 }

@@ -14,6 +14,7 @@ import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
+import { PaginationComponent } from './components/utilities/pagination.component';
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
 
@@ -35,7 +36,8 @@ export const sharedConfig: NgModule = {
         EditMovieComponent,
         ReviewsComponent,
         NewReviewComponent,
-        EditReviewComponent
+        EditReviewComponent,
+        PaginationComponent
     ],
     imports: [
         FormsModule,

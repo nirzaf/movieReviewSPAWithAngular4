@@ -12,6 +12,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ReviewsComponent } from './components/reviews/reviews.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
+import { PaginationComponent } from './components/utilities/pagination.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { EditReviewComponent } from './components/edit-review/edit-review.compon
         NotFoundComponent,
         ReviewsComponent,
         NewReviewComponent,
-        EditReviewComponent],
+        EditReviewComponent,
+        PaginationComponent],
     imports: [
         BrowserModule,
         FormsModule,

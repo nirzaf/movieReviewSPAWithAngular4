@@ -18,9 +18,10 @@ namespace MovieReviewSPA.web.Controllers.API
 
         // GET: api/lookups/movies
         [HttpGet("movies")]
-        public IEnumerable<Movie> GetMovies()
+        public IEnumerable<Movie> GetMovies(Pager movieQuery)
         {
-            return UOW.Movies.GetAll().OrderBy(m => m.Id);
+            return UOW.Movies.GetAll(movieQuery).OrderBy(m => m.Id);
+
         }
 
         // /api/Lookups/getbyreviewerid?id=1

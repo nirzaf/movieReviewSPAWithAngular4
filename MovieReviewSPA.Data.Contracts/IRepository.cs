@@ -1,10 +1,13 @@
 ﻿using System.Linq;
+using MovieReviewSPA.Model;
 
 namespace MovieReviewSPA.Data.Contracts
 {
     public interface IRepository<T> where T : class
     {
         //To query using LINQ
+        IQueryable<T> GetAll(Pager queryObj);
+
         IQueryable<T> GetAll();
 
         //Returning Movie or Review by id

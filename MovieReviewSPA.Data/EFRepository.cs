@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MovieReviewSPA.Data.Contracts;
+using MovieReviewSPA.Model;
 
 
 namespace MovieReviewSPA.Data
@@ -19,6 +20,20 @@ namespace MovieReviewSPA.Data
 
         protected DbContext DbContext { get; set; }
         protected DbSet<T> DbSet { get; set; }
+        public IQueryable<T> GetAll(Pager queryObj)
+        {
+            IQueryable<T> query = DbSet;
+
+            if (queryObj.Page <= 0)
+                queryObj.Page = 1;
+
+            if (queryObj.PageSize <= 0)
+                queryObj.PageSize = 10;
+            query = query.Skip((queryObj.Page - 1) * queryObj.PageSize).Take(queryObj.PageSize);
+
+            return query;
+        }
+
         public virtual IQueryable<T> GetAll()
         {
             return DbSet;

@@ -8,10 +8,27 @@ export class MoviesService {
     //In order to use any injectable, pass it via ctor
     constructor(private http: Http, @Inject('ORIGIN_URL') private originUrl: string) { }
 
-    getMovies() {
-        return this.http.get(this.originUrl+'/api/movies')
+    getMovies(filter) {
+        return this.http.get(this.originUrl + '/api/movies' + '?' + this.toQueryString(filter))
             //Once, we get the response back, it has to get mapped to json
             .map(res => res.json());
+    }
+
+    getMoviesCount() {
+        return this.http.get(this.originUrl + '/api/movies')
+            //Once, we get the response back, it has to get mapped to json
+            .map(res => res.json());
+    }
+
+    toQueryString(obj) {
+        var parts = [];
+        for (var property in obj) {
+            var value = obj[property];
+            if (value != null && value != undefined)
+                parts.push(encodeURIComponent(property) + '=' + encodeURIComponent(value));
+        }
+
+        return parts.join('&');
     }
 
     createMovie(movie) {
