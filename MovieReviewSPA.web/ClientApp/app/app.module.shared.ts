@@ -15,6 +15,7 @@ import { EditMovieComponent } from './components/edit-movie/edit-movie.component
 import { NewReviewComponent } from './components/new-review/new-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { PaginationComponent } from './components/utilities/pagination.component';
+import { DetailViewComponent } from './components/detail-view/detail-view.component';
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
 
@@ -37,7 +38,8 @@ export const sharedConfig: NgModule = {
         ReviewsComponent,
         NewReviewComponent,
         EditReviewComponent,
-        PaginationComponent
+        PaginationComponent,
+        DetailViewComponent
     ],
     imports: [
         FormsModule,
@@ -47,6 +49,7 @@ export const sharedConfig: NgModule = {
             { path: 'movies', component: MoviesComponent },
             { path: 'movies/new', component: NewMovieComponent },
             { path: 'movies/:id', component: EditMovieComponent },
+            { path: 'movies/detail/:id', component: DetailViewComponent },
             { path: 'reviews/:id', component: ReviewsComponent },
             { path: 'editreview/:id', component: EditReviewComponent },
             { path: 'reviews/new/:id', component: NewReviewComponent },

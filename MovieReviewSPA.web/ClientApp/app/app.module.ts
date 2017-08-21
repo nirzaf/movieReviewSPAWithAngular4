@@ -13,6 +13,8 @@ import { ReviewsComponent } from './components/reviews/reviews.component';
 import { NewReviewComponent } from './components/new-review/new-review.component';
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { PaginationComponent } from './components/utilities/pagination.component';
+import { DetailViewComponent } from './components/detail-view/detail-view.component';
+
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { PaginationComponent } from './components/utilities/pagination.component
         ReviewsComponent,
         NewReviewComponent,
         EditReviewComponent,
-        PaginationComponent],
+        PaginationComponent,
+        DetailViewComponent
+],
     imports: [
         BrowserModule,
         FormsModule,

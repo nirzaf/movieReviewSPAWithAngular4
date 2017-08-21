@@ -32,6 +32,7 @@
                                     <br>
                                     <span class="btn btn-info"><i class="glyphicon glyphicon-th"></i> <a [routerLink]="['/reviews/', m.id]" style="color: black">Movie Reviews:- {{m.noOfReviews}} </a></span>
                                     <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a [routerLink]="['/movies/', m.id]" style="color: black">Edit Movie </a></span>
+                                    <span class="btn btn-success"><i class="glyphicon glyphicon-upload"></i> <a [routerLink]="['/movies/detail/', m.id]" style="color: black">Detail View </a></span>
                                     <button class="btn btn-danger" data-toggle="confirmation" style="color: black" type="button" (click)="delete(m.id)"><i class="glyphicon glyphicon-remove"></i> Delete Movie</button>
                                 </small>
                                 <hr>
