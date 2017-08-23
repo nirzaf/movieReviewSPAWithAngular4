@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieReviewSPA.Model
@@ -17,6 +18,12 @@ namespace MovieReviewSPA.Model
         [StringLength(10)]
         public string ReleaseYear { get; set; }
         public virtual ICollection<MovieReview> Reviews { get; set; }
+        public virtual ICollection<Image> Images { get; set; }
+
+        public Movie()
+        {
+            Images = new Collection<Image>();
+        }
 
     }
 }

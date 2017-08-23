@@ -10,6 +10,7 @@ using MovieReviewSPA.Data;
 using MovieReviewSPA.Data.Contracts;
 using MovieReviewSPA.Data.Helpers;
 using MovieReviewSPA.Data.SampleData;
+using MovieReviewSPA.Model;
 
 namespace MovieReviewSPA.web
 {
@@ -40,6 +41,7 @@ namespace MovieReviewSPA.web
             //Initiating Seed Data
             services.AddTransient<InitialData>();
             //DI Setup 
+            services.Configure<ImageSettings>(Configuration.GetSection("ImageSettings"));
             services.AddScoped<RepositoryFactories, RepositoryFactories>();
             services.AddScoped<IRepositoryProvider, RepositoryProvider>();
             services.AddScoped<IMovieReviewUow, MovieReviewUow>();

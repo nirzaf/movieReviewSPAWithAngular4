@@ -1,3 +1,4 @@
+import 'bootstrap';
 import 'reflect-metadata';
 import 'zone.js';
 import { enableProdMode } from '@angular/core';

@@ -1,26 +1,33 @@
-<div class="container">
-    <div class="row">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm" role="form" class="col-md-9 go-right">
-            <h2>Edit Movie</h2>
-            <div class="form-group">
-                <input id="movieName" name="movieName" type="text" class="form-control" required [(ngModel)]="movie.movieName" #movieName="ngModel">
-                <label for="movieName">Movie Name</label>
-                <div class="alert alert-danger" *ngIf="movieName.touched && !movieName.valid">Please specify the Movie Name!</div>
-            </div>
-            <div class="form-group">
-                <input id="directorName" name="directorName" type="text" class="form-control" required [(ngModel)]="movie.directorName" #directorName="ngModel">
-                <label for="directorName">Director Name</label>
-                <div class="alert alert-danger" *ngIf="directorName.touched && !directorName.valid">Please specify the Director Name!</div>
-            </div>
-            <div class="form-group">
-                <input id="releaseYear" name="releaseYear" type="text" class="form-control" required [(ngModel)]="movie.releaseYear" #releaseYear="ngModel">
-                <label for="releaseYear">Release Year</label>
-                <div class="alert alert-danger" *ngIf="releaseYear.touched && !releaseYear.valid">Please specify the Release Year!</div>
-            </div>
-            <p class="bg-success" style="padding: 10px; margin-top: 20px; clear: both">
-                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
-                <a [routerLink]="['/movies/']" class="btn btn-info"><i class="glyphicon glyphicon-backward"></i> Back</a>
+<h1>Movie</h1>
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Movie</a></li>
+        <li role="presentation"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Pics</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content" *ngIf="movie">
+        <!-- Vehicle tab -->
+        <div role="tabpanel" class="tab-pane active" id="basic">
+            <h2>About Movie</h2>
+            <ul>
+                <li>Name: {{ movie.movieName }}</li>
+                <li>Director Name: {{ movie.directorName }}</li>
+                <li>Release Year: {{ movie.releaseYear }}
+            </ul>
+            <br />
+            <p>
+                <a class="btn btn-info" [routerLink]="['/movies']">View All Movies</a>
             </p>
-        </form>
+        </div>
+        <!-- Photos tab -->
+        <div role="tabpanel" class="tab-pane" id="photos">
+            <h2>Movie Pics</h2>
+            <input type="file" (change)="uploadImage()" #fileInput />
+        </div>
     </div>
 </div>
+
+
+
+
