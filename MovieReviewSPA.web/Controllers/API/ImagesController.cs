@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +58,15 @@ namespace MovieReviewSPA.web.Controllers.API
             movie.Images.Add(image);
             _uow.Commit();
             return Ok(image);
+        }
+
+        //Fetch photos based on movieId
+        [HttpGet]
+        public IQueryable<Image>[] Get(int id)
+        {
+            IQueryable<Image>[] images = new[] { _uow.Images.GetAll().Where(m => m.MovieId == id) };
+            if (images != null) return images;
+            throw new Exception(new HttpResponseMessage(HttpStatusCode.NotFound).ToString());
         }
     }
 }

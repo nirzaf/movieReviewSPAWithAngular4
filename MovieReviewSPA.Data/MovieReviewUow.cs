@@ -17,11 +17,15 @@ namespace MovieReviewSPA.Data
         public IRepository<Movie> Movies { get { return GetStandardRepo<Movie>(); } }
         public IRepository<MovieReview> MovieReviews { get { return GetStandardRepo<MovieReview>(); } }
 
+        public IRepository<Image> Images { get { return GetStandardRepo<Image>(); } }
 
         public void Commit()
         {
             DbContext.SaveChanges();
         }
+
+        
+
         protected void CreateDbContext()
         {
             DbContext = new MovieReviewDbContext();

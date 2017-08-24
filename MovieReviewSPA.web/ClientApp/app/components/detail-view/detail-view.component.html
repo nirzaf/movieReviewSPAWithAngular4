@@ -7,7 +7,7 @@
     </ul>
     <!-- Tab panes -->
     <div class="tab-content" *ngIf="movie">
-        <!-- Vehicle tab -->
+        <!-- Movie tab -->
         <div role="tabpanel" class="tab-pane active" id="basic">
             <h2>About Movie</h2>
             <ul>
@@ -24,6 +24,7 @@
         <div role="tabpanel" class="tab-pane" id="photos">
             <h2>Movie Pics</h2>
             <input type="file" (change)="uploadImage()" #fileInput />
+            <img *ngFor="let image of images" src="/uploads/{{image.fileName}}" class="img-thumbnail" style="width:200px;height:200px;" />
         </div>
     </div>
 </div>

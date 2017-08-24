@@ -18,7 +18,7 @@ import { PaginationComponent } from './components/utilities/pagination.component
 import { DetailViewComponent } from './components/detail-view/detail-view.component';
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
-
+import { ImagesService } from './services/images.service';
 
 Raven
     .config('https://7579eaef4acc46bab3ffd87d3d85f3ea@sentry.io/203240')
@@ -59,6 +59,6 @@ export const sharedConfig: NgModule = {
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers: [MoviesService, ReviewsService]
+    providers: [MoviesService, ReviewsService, ImagesService]
     
 };
