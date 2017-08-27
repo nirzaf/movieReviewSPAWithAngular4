@@ -68,6 +68,13 @@ namespace MovieReviewSPA.web
 
             app.UseStaticFiles();
 
+            var options = new JwtBearerOptions
+            {
+                Audience = "https://api.movie-review.com",
+                Authority = "https://movie-review.auth0.com/"
+            };
+            app.UseJwtBearerAuthentication(options);
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

@@ -2,6 +2,7 @@ import * as Raven from 'raven-js';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { BrowserXhr } from '@angular/http';
 import { ToastyModule } from 'ng2-toasty';
 import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
@@ -19,6 +20,9 @@ import { DetailViewComponent } from './components/detail-view/detail-view.compon
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
 import { ImagesService } from './services/images.service';
+import { AuthService } from './services/auth.service';
+import { ProgressService, BrowserXHRService } from './services/progress.service';
+
 
 Raven
     .config('https://7579eaef4acc46bab3ffd87d3d85f3ea@sentry.io/203240')
@@ -59,6 +63,14 @@ export const sharedConfig: NgModule = {
             { path: '**', redirectTo: 'home' }
         ])
     ],
-    providers: [MoviesService, ReviewsService, ImagesService]
+    providers: [
+        MoviesService,
+        ReviewsService,
+        ImagesService,
+        AuthService
+     //   { provide: BrowserXhr, useValue: BrowserXHRService },
+       // ProgressService
+    ]
+        
     
 };

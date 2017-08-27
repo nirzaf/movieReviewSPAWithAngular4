@@ -25,8 +25,12 @@ module.exports = (env) => {
                 '@angular/platform-browser',
                 '@angular/platform-browser-dynamic',
                 '@angular/router',
+                'angular2-jwt',
+                'auth0-js',
+                'auth0-lock',
                 'bootstrap',
                 'bootstrap/dist/css/bootstrap.css',
+                'font-awesome/css/font-awesome.css',
                 'es6-shim',
                 'es6-promise',
                 'event-source-polyfill',
@@ -34,7 +38,7 @@ module.exports = (env) => {
                 'ng2-toasty/bundles/style-bootstrap.css',
                 'jquery',
                 'raven-js',
-                'zone.js',
+                'zone.js'
             ]
         },
         output: {
