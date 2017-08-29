@@ -16,7 +16,8 @@ export class DetailViewComponent implements OnInit {
     @ViewChild('loaderInput') loaderInput: ElementRef;
     movie: Movie = new Movie();
     images: any[];
-    
+    public hide = false;
+    showHide: boolean;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -27,6 +28,7 @@ export class DetailViewComponent implements OnInit {
         route.params.subscribe(p => {
             this.movie.id = +p['id'];
         });
+        this.showHide = true;
     }
     
     ngOnInit() {
@@ -36,10 +38,17 @@ export class DetailViewComponent implements OnInit {
         //console.log(el);
         //el.style.display = "block";
 
-        this.imagesService.getImages(this.movie.id)
-            .subscribe(images => {
-                this.images = images[0];
-            });
+       
+        setTimeout(function () {
+            this.imagesService.getImages(this.movie.id)
+                .subscribe(images => {
+                    this.images = images[0];
+                });
+            this.showHide = false;
+            console.log("Hide:- ", this.showHide);
+        }.bind(this), 10000);
+       /* var nativeElement1: HTMLInputElement = this.loaderInput.nativeElement;
+        console.log("Loader:- ",nativeElement1);*/
         //nativeElement1.className = "none";
 
         if (this.movie.id) {
