@@ -8,13 +8,13 @@ import Auth0Lock from 'auth0-lock';
 
 @Injectable()
 export class AuthService {
-    lock = new Auth0Lock('nqvYvwnAvJ0CJ74YOWs2MqGfraYz0azA', 'movie-review.auth0.com');
+    lock = new Auth0Lock('HwTjSrCFV320gGkuhZ2KiT861miuXMh1', 'movie-review.auth0.com',{});
 
     constructor() {
         // Add callback for lock `authenticated` event
         this.lock.on('authenticated', (authResult) => {
             console.log(authResult);
-            localStorage.setItem('token', authResult.idToken);
+            localStorage.setItem('token', authResult.accessToken);
         });
     }
 

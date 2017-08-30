@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li [routerLinkActive]="['link-active']">
-                    <a (click)="authService.login()" *ngIf="!authService.authenticated()">
+                    <a href="https://movie-review.auth0.com/login?client=HwTjSrCFV320gGkuhZ2KiT861miuXMh1" *ngIf="!authService.authenticated()">
                         <span class='glyphicon glyphicon-user'></span> Login
                     </a>
                     <a (click)="authService.logout()" *ngIf="authService.authenticated()">
