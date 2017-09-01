@@ -42,6 +42,11 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div *ngIf="showHide" id="loader" style="display: block" align="center">
+                <button class="btn btn-danger btn-lg"><i class="fa fa-refresh fa-spin"></i> Loading Movies</button>
+            </div>
+        </div>
     </div>
 </form>
 <pager [total-items]="totalMovies" [page-size]="3" (page-changed)="onPageChange($event)"></pager>

@@ -13,7 +13,6 @@ import { ToastyService } from "ng2-toasty";
 })
 export class DetailViewComponent implements OnInit {
     @ViewChild('fileInput') fileInput: ElementRef;
-    @ViewChild('loaderInput') loaderInput: ElementRef;
     movie: Movie = new Movie();
     images: any[];
     public hide = false;
@@ -30,26 +29,16 @@ export class DetailViewComponent implements OnInit {
         });
         this.showHide = true;
     }
-    
-    ngOnInit() {
-        //var nativeElement1: HTMLInputElement = this.loaderInput.nativeElement;
-        // nativeElement1.className = "block";
-        //var el = document.getElementById("loader");
-        //console.log(el);
-        //el.style.display = "block";
 
-       
+    ngOnInit() {
+
         setTimeout(function () {
             this.imagesService.getImages(this.movie.id)
                 .subscribe(images => {
                     this.images = images[0];
                 });
             this.showHide = false;
-            console.log("Hide:- ", this.showHide);
-        }.bind(this), 10000);
-       /* var nativeElement1: HTMLInputElement = this.loaderInput.nativeElement;
-        console.log("Loader:- ",nativeElement1);*/
-        //nativeElement1.className = "none";
+        }.bind(this), 3000);
 
         if (this.movie.id) {
             this.moviesService.getMovie(this.movie.id)
@@ -63,8 +52,6 @@ export class DetailViewComponent implements OnInit {
                     }
                 });
         }
-
-
     }
 
     onSubmit() {
@@ -97,28 +84,15 @@ export class DetailViewComponent implements OnInit {
 
     uploadImage() {
         var nativeElement: HTMLInputElement = this.fileInput.nativeElement;
-        
-        //this.nativeElement1.className = "block";
 
-        //this.progressService.uploadProgress.subscribe(progress => console.log(progress));
-       // setTimeout(function () {
-            this.imagesService.upload(this.movie.id, nativeElement.files[0]).subscribe(image => this.images.push(image));
-            this.toastyService.success({
-                title: 'Success',
-                msg: 'Image Uploaded!',
-                theme: 'bootstrap',
-                showClose: true,
-                timeout: 5000
-            });
-       // }, 1000);
-        //this.nativeElement1.className = "none";
+        this.imagesService.upload(this.movie.id, nativeElement.files[0]).subscribe(image => this.images.push(image));
+        this.toastyService.success({
+            title: 'Success',
+            msg: 'Image Uploaded!',
+            theme: 'bootstrap',
+            showClose: true,
+            timeout: 5000
+        });
     }
-    toggleSpinner() {
-        alert();
-        var el = document.getElementById("loader");
-        el.style.display = "block";
-    }
-
-
 }
 

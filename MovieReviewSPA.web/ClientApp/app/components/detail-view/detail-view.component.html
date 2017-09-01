@@ -24,19 +24,12 @@
         <!-- Photos tab -->
         <div role="tabpanel" class="tab-pane" id="photos">
             <h2>Movie Pics</h2>
-            <!--<i class="fa fa-address-book" aria-hidden="true"></i>-->
 
             <input type="file" (change)="uploadImage()" #fileInput />
-          <!--  <div *ngIf="showHide">
-                <div id="loader" #loaderInput>
-                    <img src="https://login.microsoftonline.com/static/img/win8loader.gif" alt="Please wait">
-                    <div id="verifying_blurb">Please wait while we get images.</div>
-                </div>
-            </div>-->
             <img *ngFor="let image of images" src="/uploads/{{image.fileName}}" class="img-thumbnail" style="width:200px;height:200px;" />
-             <div *ngIf="showHide" id="loader" style="display: block" (load)="toggleSpinner()" align="center" #loaderInput>
-                 <i class="fa fa-cog fa-fw fa-spin fa-2x"> </i> Getting Images
-             </div>
+            <div *ngIf="showHide" id="loader" style="display: block" align="center">
+                <button class="btn btn-danger btn-lg"><i class="fa fa-refresh fa-spin"></i> Loading Images</button>
+            </div>
         </div>
 
     </div>

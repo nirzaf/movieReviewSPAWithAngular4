@@ -21,17 +21,21 @@ export class MoviesComponent implements OnInit {
         allMovies: 10
     }
     queryResult: any = {};
+    showHide: boolean;
 
     constructor(
         private moviesService: MoviesService, private router: Router, private toastyService: ToastyService) {
-
+        this.showHide = true;
     }
 
     ngOnInit() {
-        this.moviesService.getMovies(this.query).subscribe(movies => {
-            this.movies = this.allMovies = movies;
-            console.log("Movies:- ", this.movies);
-        });
+        setTimeout(function () {
+            this.moviesService.getMovies(this.query).subscribe(movies => {
+                this.movies = this.allMovies = movies;
+                console.log("Movies:- ", this.movies);
+            });
+            this.showHide = false;
+        }.bind(this), 3000);
         this.moviesService.getMoviesCount().subscribe(movies => {
             this.totalMovies = movies.length;
             console.log("Total Movies:- ", this.totalMovies);
@@ -47,25 +51,25 @@ export class MoviesComponent implements OnInit {
         if (confirm("Are you sure?")) {
             this.moviesService.deleteMovie(id)
                 .subscribe(x => {
-                        this.toastyService.success({
-                            title: 'Success',
-                            msg: 'Movie Deleted!',
-                            theme: 'bootstrap',
-                            showClose: true,
-                            timeout: 5000
-                        });
-                        this.router.navigate(['/home']);
-                    },
-                    err => {
-                        Raven.captureException(err.originalError || err);
-                        this.toastyService.error({
-                            title: 'Error',
-                            msg: 'An unexpected error while deleting the record!',
-                            theme: 'bootstrap',
-                            showClose: true,
-                            timeout: 5000
-                        });
+                    this.toastyService.success({
+                        title: 'Success',
+                        msg: 'Movie Deleted!',
+                        theme: 'bootstrap',
+                        showClose: true,
+                        timeout: 5000
                     });
+                    this.router.navigate(['/home']);
+                },
+                err => {
+                    Raven.captureException(err.originalError || err);
+                    this.toastyService.error({
+                        title: 'Error',
+                        msg: 'An unexpected error while deleting the record!',
+                        theme: 'bootstrap',
+                        showClose: true,
+                        timeout: 5000
+                    });
+                });
         }
     }
     private populateMovies() {
