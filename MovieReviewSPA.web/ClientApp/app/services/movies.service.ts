@@ -1,12 +1,13 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { AuthHttp } from 'angular2-jwt/angular2-jwt';
 
 @Injectable()
 export class MoviesService {
 
     //In order to use any injectable, pass it via ctor
-    constructor(private http: Http, @Inject('ORIGIN_URL') private originUrl: string) { }
+    constructor(private http: Http, @Inject('ORIGIN_URL') private originUrl: string, private authHttp:AuthHttp) { }
 
     getMovies(filter) {
         return this.http.get(this.originUrl + '/api/movies' + '?' + this.toQueryString(filter))
@@ -32,7 +33,7 @@ export class MoviesService {
     }
 
     createMovie(movie) {
-        return this.http.post('/api/movies', movie)
+        return this.authHttp.post('/api/movies', movie)
             .map(res => res.json());
     }
 

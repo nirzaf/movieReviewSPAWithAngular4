@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { HttpModule, BrowserXhr } from '@angular/http';
+import { HttpModule } from '@angular/http';
+import { AUTH_PROVIDERS } from 'angular2-jwt/angular2-jwt';
 import { sharedConfig } from './app.module.shared';
 import { MoviesComponent } from './components/movies/movies.component';
 import { MoviesService } from './services/movies.service';
 import { ReviewsService } from './services/reviews.service';
 import { ImagesService } from './services/images.service';
 import { AuthService } from './services/auth.service';
-import { ProgressService, BrowserXHRService } from './services/progress.service';
+import { AuthGuard } from "./services/auth-guard.service";
+import { AdminAuthGuard } from "./services/admin-auth-guard.service";
 import { NewMovieComponent } from './components/new-movie/new-movie.component';
 import { EditMovieComponent } from './components/edit-movie/edit-movie.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
@@ -17,6 +19,7 @@ import { NewReviewComponent } from './components/new-review/new-review.component
 import { EditReviewComponent } from './components/edit-review/edit-review.component';
 import { PaginationComponent } from './components/utilities/pagination.component';
 import { DetailViewComponent } from './components/detail-view/detail-view.component';
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 
 
 
@@ -32,9 +35,10 @@ import { DetailViewComponent } from './components/detail-view/detail-view.compon
         NewReviewComponent,
         EditReviewComponent,
         PaginationComponent,
-        DetailViewComponent
-        
-],
+        DetailViewComponent,
+        NotAuthorizedComponent
+
+    ],
     imports: [
         BrowserModule,
         FormsModule,
@@ -43,12 +47,13 @@ import { DetailViewComponent } from './components/detail-view/detail-view.compon
     ],
     providers: [
         { provide: 'ORIGIN_URL', useValue: location.origin },
-       // { provide: BrowserXhr, useValue: BrowserXHRService },
         MoviesService,
         ReviewsService,
         ImagesService,
-        AuthService
-       // ProgressService
+        AuthService,
+        AuthGuard,
+        AdminAuthGuard,
+        AUTH_PROVIDERS
     ]
 })
 export class AppModule {

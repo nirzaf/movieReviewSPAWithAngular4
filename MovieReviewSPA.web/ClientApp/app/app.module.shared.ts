@@ -2,8 +2,8 @@ import * as Raven from "raven-js";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { FormsModule } from "@angular/forms";
-import { BrowserXhr } from "@angular/http";
 import { ToastyModule } from "ng2-toasty";
+import { AUTH_PROVIDERS } from 'angular2-jwt/angular2-jwt';
 import { AppComponent } from "./components/app/app.component"
 import { NavMenuComponent } from "./components/navmenu/navmenu.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -18,11 +18,14 @@ import { EditReviewComponent } from "./components/edit-review/edit-review.compon
 import { PaginationComponent } from "./components/utilities/pagination.component";
 import { DetailViewComponent } from "./components/detail-view/detail-view.component";
 import { NotFoundComponent } from "./components/not-found/not-found.component";
+import { NotAuthorizedComponent } from './components/not-authorized/not-authorized.component';
 import { MoviesService } from "./services/movies.service";
 import { ReviewsService } from "./services/reviews.service";
 import { ImagesService } from "./services/images.service";
 import { AuthService } from "./services/auth.service";
-import { ProgressService, BrowserXHRService } from "./services/progress.service";
+import { AuthGuard } from "./services/auth-guard.service";
+import { AdminAuthGuard } from "./services/admin-auth-guard.service";
+
 
 
 Raven
@@ -44,7 +47,9 @@ export const sharedConfig: NgModule = {
         NewReviewComponent,
         EditReviewComponent,
         PaginationComponent,
-        DetailViewComponent
+        DetailViewComponent,
+        NotFoundComponent,
+        NotAuthorizedComponent
     ],
     imports: [
         FormsModule,
@@ -52,7 +57,7 @@ export const sharedConfig: NgModule = {
         RouterModule.forRoot([
             { path: "", redirectTo: "home", pathMatch: "full" },
             { path: "movies", component: MoviesComponent },
-            { path: "movies/new", component: NewMovieComponent },
+            { path: "movies/new", component: NewMovieComponent, canActivate: [AdminAuthGuard] },
             { path: "movies/:id", component: EditMovieComponent },
             { path: "movies/detail/:id", component: DetailViewComponent },
             { path: "reviews/:id", component: ReviewsComponent },
@@ -62,6 +67,7 @@ export const sharedConfig: NgModule = {
             { path: "counter", component: CounterComponent },
             { path: "fetch-data", component: FetchDataComponent },
             { path: "pageNotFound", component: NotFoundComponent, data: { title: "Page not found" } },
+            { path: "notAuthorized", component: NotAuthorizedComponent, data: { title: "Not Authorized" } },
             { path: "**", redirectTo: "pageNotFound", pathMatch: "full" }
             /*{ path: '**', redirectTo: 'home' }*/
         ])
@@ -70,10 +76,11 @@ export const sharedConfig: NgModule = {
         MoviesService,
         ReviewsService,
         ImagesService,
-        AuthService
-     //   { provide: BrowserXhr, useValue: BrowserXHRService },
-       // ProgressService
-    ]
+        AuthService,
+        AuthGuard,
+        AdminAuthGuard,
+        AUTH_PROVIDERS
+     ]
         
     
 };

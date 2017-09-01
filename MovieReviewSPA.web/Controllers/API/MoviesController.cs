@@ -59,9 +59,11 @@ namespace MovieReviewSPA.web.Controllers.API
 
         // Create a new movie
         // POST /api/movies
+        [Authorize("AdminRole")]
         [HttpPost("")]
         public int Post([FromBody]Movie movie)
         {
+            UOW.Movies.Add(movie);
             UOW.Commit();
             return Response.StatusCode = (int)HttpStatusCode.Created;
         }

@@ -46,6 +46,12 @@ namespace MovieReviewSPA.web
             services.AddScoped<IRepositoryProvider, RepositoryProvider>();
             services.AddScoped<IMovieReviewUow, MovieReviewUow>();
 
+            //Authorization Policy
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminRole", policy=>policy.RequireClaim("https://movie-review.com/roles","Admin"));
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
