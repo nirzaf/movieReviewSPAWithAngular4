@@ -26,22 +26,22 @@ If you are running on **asp.net core 2.0**, then apply below command
 
 Once it gets installed successfully, then dotnet ef command should give you below screen.
 
-![image.png](.attachments/image-ea5d857d-14a0-4ea2-82fc-acbf06b02838.png)
+![image.png](https://user-images.githubusercontent.com/3886381/37359616-18566642-2714-11e8-8715-75e997bbdb45.png)
 
 #CREATING THE DATABASE: -
 
 In order to create the database, we will do migrations. In order to use migrations, we need to execute dotnet ef migrations add InitialDb. As soon as I execute this file, it will show the following error:
 
-![image.png](.attachments/image-84fe58c3-2de4-42a1-9802-ea3fa0c26f67.png)
+![image.png](https://user-images.githubusercontent.com/3886381/37359653-3181b270-2714-11e8-83a1-4828d6bd33b2.png)
 
 It clearly says that I forgot to add the following package. I can add the package from NuGet itself. However, this time; I will add it via the command line
  “**dotnet add package Microsoft.EntityFrameworkCore. Design**” as shown below.
 
-![image.png](.attachments/image-9799809e-0a05-46e6-a914-0f292f11d43a.png)
+![image.png](https://user-images.githubusercontent.com/3886381/37359696-4c4b5e1c-2714-11e8-9863-7a9ce4aa7b6c.png)
 
 After this, I will use the command dotnet restore. Once the restore is completed, I will again execute the migration command dotnet ef migrations add InitialDb. It will show the following error:
 
-![image.png](.attachments/image-637f0d58-6691-4ebf-90d0-dd607911651f.png)
+![image.png](https://user-images.githubusercontent.com/3886381/37359751-6c465b5e-2714-11e8-8294-9a132eae63c1.png)
 
 Here, it’s basically saying that you need to change the migration assembly to MovieReviewSPA.web via DBContextOptionsBuilder. Here is the snippet for the same. 
 
@@ -59,11 +59,11 @@ Here, it’s basically saying that you need to change the migration assembly to 
 ```
 Which is already there in the code. Hence, you don’t need to do anything. It may happen, that you again the same error. But not to worry because db has created in the localdb. This is interim problem, which was already opened in git. Basically, this arises when data model folder is different from dbcontext project. Already explained in the book. MS will fix this as they are having in their backlog.
 
-![image.png](.attachments/image-cd8ee496-0924-492c-a785-c1b154a85cf1.png)
+![image.png](https://user-images.githubusercontent.com/3886381/37359790-849adbda-2714-11e8-918f-7f1f1db756c5.png)
 
 Now, at this moment, when you go and try to see database in localdb, then it will appear like 
 
-![image.png](.attachments/image-e43c7bca-9199-4b5d-ac82-3a3a3043f148.png)
+![image.png](https://user-images.githubusercontent.com/3886381/37359839-a366cdee-2714-11e8-9807-aef5e7e1e905.png)
 
 Amazon Link:- http://bit.ly/spa-asp-core
 
