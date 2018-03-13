@@ -70,7 +70,9 @@ Amazon Link:- http://bit.ly/spa-asp-core
 Blog Link:-  https://myview.rahulnivi.net/building-single-page-app-asp-net-core-angular/
 
 Thanks,
+
 Rahul Sahay
+
 Happy Coding
  
 
