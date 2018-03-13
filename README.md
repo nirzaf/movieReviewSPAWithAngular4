@@ -2,9 +2,9 @@
 Once cloned, then run npm install to install all the dependencies. Then, run webpack command to make sure bundle is properly created and aligned with command **webpack --config webpack.config.vendor.js**
 Next, run webpack command to make suer that bundle is properly created.
 
-##Note:- Follow below steps, if while running EF core hasn't resolved automatically.
+## Note:- Follow below steps, if while running EF core hasn't resolved automatically.
 
-#INSTALLING DOTNET CLI FOR EF: -
+# INSTALLING DOTNET CLI FOR EF: -
 In this section, we will use Migrations to build our database. Migrations are ways to use tooling in Entity Framework to look at the database and requirements of the application and build a set of code to toggle the database from one version to another. When we run migrations or use migrations for the first time, it will build the database. This will become version one of the database. 
 
 And as the development progresses, we can add new versions to the project. Here, in order to do the migrations, we will use the command line tool. But, in order to use this tool, we need to add Command Line Interface (CLI) support. Now, the easy way to do this is to add the following command to the .csproj file and then restore the same.
@@ -28,7 +28,7 @@ Once it gets installed successfully, then dotnet ef command should give you belo
 
 ![image.png](https://user-images.githubusercontent.com/3886381/37359616-18566642-2714-11e8-8715-75e997bbdb45.png)
 
-#CREATING THE DATABASE: -
+# CREATING THE DATABASE: -
 
 In order to create the database, we will do migrations. In order to use migrations, we need to execute dotnet ef migrations add InitialDb. As soon as I execute this file, it will show the following error:
 
