@@ -1,0 +1,45 @@
+<br />
+<p>
+    <a [routerLink]="['/reviews/new/',review.movieId]" class="btn btn-primary"> <i class="glyphicon glyphicon-plus"></i> Post New Review</a>
+    <a [routerLink]="['/movies/']" class="btn btn-info"><i class="glyphicon glyphicon-backward"></i> Back</a>
+</p>
+<h3>Reviews for {{movie.movieName}}</h3>
+<div class="well">
+    <div class="form-group">
+        <label for="reviewerRating">Filter Reviews by Rating</label>
+        <select id="reviewerRating" class="form-control" [(ngModel)]="filter.reviewerRating" (change)="onDropdownChange()">
+            <option value=""></option>
+            <option *ngFor="let r of reviews" value="{{r.reviewerRating}}">{{r.reviewerRating}}</option>
+        </select>
+    </div>
+    <button class="btn btn-danger" (click)="onResetFilter()">Reset</button>
+</div>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-9">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="row-content" *ngFor="let r of reviews">
+                                <div class="list-group-item-heading">
+                                    <a href="#" title="reviewerName">
+                                        <small>Reviewer Name:- {{r.reviewerName}}</small>
+                                    </a>
+                                </div>
+                                <small>
+                                    <i class="glyphicon glyphicon-time"></i> Reviewer Comments:- {{r.reviewerComments}}
+                                    <i class="glyphicon glyphicon-user"></i> Reviewer Rating:- {{r.reviewerRating}}
+                                    <br>
+                                    <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a [routerLink]="['/editreview/', r.id]" style="color: black">Edit Review </a></span>
+                                    <button class="btn btn-danger" style="color: black" type="button" (click)="delete(r.id)"><i class="glyphicon glyphicon-remove"></i> Delete Review</button>
+                                </small>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

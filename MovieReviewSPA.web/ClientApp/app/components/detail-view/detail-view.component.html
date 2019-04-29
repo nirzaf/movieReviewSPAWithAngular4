@@ -1,0 +1,40 @@
+<h1>Movie</h1>
+
+<div>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#basic" aria-controls="basic" role="tab" data-toggle="tab">Movie</a></li>
+        <li role="presentation"><a href="#photos" aria-controls="photos" role="tab" data-toggle="tab">Pics</a></li>
+    </ul>
+    <!-- Tab panes -->
+    <div class="tab-content" *ngIf="movie">
+        <!-- Movie tab -->
+        <div role="tabpanel" class="tab-pane active" id="basic">
+            <h2>About Movie</h2>
+            <ul>
+                <li>Name: {{ movie.movieName }}</li>
+                <li>Director Name: {{ movie.directorName }}</li>
+                <li>Release Year: {{ movie.releaseYear }}
+            </ul>
+            <br />
+            <p>
+                <a class="btn btn-info" [routerLink]="['/movies']">View All Movies</a>
+            </p>
+        </div>
+        <!-- Photos tab -->
+        <div role="tabpanel" class="tab-pane" id="photos">
+            <h2>Movie Pics</h2>
+
+            <input type="file" (change)="uploadImage()" #fileInput />
+            <img *ngFor="let image of images" src="/uploads/{{image.fileName}}" class="img-thumbnail" style="width:200px;height:200px;" />
+            <div *ngIf="showHide" id="loader" style="display: block" align="center">
+                <button class="btn btn-danger btn-lg"><i class="fa fa-refresh fa-spin"></i> Loading Images</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+

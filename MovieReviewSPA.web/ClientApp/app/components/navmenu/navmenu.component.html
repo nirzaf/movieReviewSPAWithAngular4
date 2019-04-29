@@ -1,0 +1,51 @@
+<div class='main-nav'>
+    <div class='navbar navbar-inverse'>
+        <div class='navbar-header'>
+            <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+                <span class='sr-only'>Toggle navigation</span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+                <span class='icon-bar'></span>
+            </button>
+            <a class='navbar-brand' [routerLink]="['/home']">MovieReviewSPA_web</a>
+        </div>
+        <div class='clearfix'></div>
+        <div class='navbar-collapse collapse'>
+            <ul class='nav navbar-nav'>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/home']">
+                        <span class='glyphicon glyphicon-home'></span> Home
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a href="https://movie-review.auth0.com/login?client=HwTjSrCFV320gGkuhZ2KiT861miuXMh1" *ngIf="!authService.authenticated()">
+                        <span class='glyphicon glyphicon-user'></span> Login
+                    </a>
+                    <a (click)="authService.logout()" *ngIf="authService.authenticated()">
+                        <span class='glyphicon glyphicon-user'></span> Logout
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}">
+                    <a [routerLink]="['/movies']">
+                        <span class='glyphicon glyphicon-film'></span> Movies
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']" *ngIf="authService.isInRole('Admin')">
+                    <a [routerLink]="['/movies/new']">
+                        <span class='glyphicon glyphicon-plus'></span> New Movie
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/counter']">
+                        <span class='glyphicon glyphicon-education'></span> Counter
+                    </a>
+                </li>
+                <li [routerLinkActive]="['link-active']">
+                    <a [routerLink]="['/fetch-data']">
+                        <span class='glyphicon glyphicon-th-list'></span> Fetch data
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

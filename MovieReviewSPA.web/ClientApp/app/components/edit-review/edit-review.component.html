@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" role="form" class="col-md-9 go-right">
+            <h2>Edit Review</h2>
+            <div class="form-group">
+                <input id="reviewerName" name="reviewerName" type="text" class="form-control" required [(ngModel)]="review.reviewerName" ngControl="reviewerName" #reviewerName="ngModel">
+                <label for="reviewerName">Reviewer Name</label>
+                <div class="alert alert-danger" *ngIf="reviewerName.touched && !reviewerName.valid">Please specify the Reviewer Name!</div>
+            </div>
+            <div class="form-group">
+                <textarea id="reviewerComments" name="reviewerComments" type="text" class="form-control" required [(ngModel)]="review.reviewerComments" ngControl="reviewerComments" #reviewerComments="ngModel"></textarea>
+                <label for="reviewerComments">Reviewer Comments</label>
+                <div class="alert alert-danger" *ngIf="reviewerComments.touched && !reviewerComments.valid">Please specify the Reviewer Comments!</div>
+            </div>
+            <div class="form-group">
+                <input id="reviewerRating" name="reviewerRating" type="text" class="form-control" required [(ngModel)]="review.reviewerRating" ngControl="reviewerRating" #reviewerRating="ngModel">
+                <label for="reviewerRating">Reviewer Rating</label>
+                <div class="alert alert-danger" *ngIf="reviewerRating.touched && !reviewerRating.valid">Please specify the Reviewer Rating!</div>
+            </div>
+            <p class="bg-success" style="padding:10px;margin-top:20px;clear:both">
+                <button type="submit" class="btn btn-primary" [disabled]="!f.valid">Submit</button>
+                <a [routerLink]="['/movies/']" class="btn btn-info"><i class="glyphicon glyphicon-backward"></i> Back</a>
+            </p>
+
+        </form>
+    </div>
+</div>

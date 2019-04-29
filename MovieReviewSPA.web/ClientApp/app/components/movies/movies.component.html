@@ -1,0 +1,52 @@
+<br />
+<p>
+    <a [routerLink]="['/movies/new']" class="btn btn-primary">Create New Movie</a>
+</p>
+<div class="well">
+    <div class="form-group">
+        <label for="movie">Filter Movie</label>
+        <select id="movie" class="form-control" [(ngModel)]="filter.id" (change)="onDropdownChange()">
+            <option value=""></option>
+            <option *ngFor="let m of movies" value="{{m.id}}">{{m.movieName}}</option>
+        </select>
+    </div>
+    <button class="btn btn-danger" (click)="onResetFilter()">Reset</button>
+</div>
+<h3>Movies List</h3>
+<form>
+    <div class="container">
+        <div class="row">
+            <div class="row">
+                <div class="col-xs-12 col-sm-9 col-md-9">
+                    <div class="list-group">
+                        <div class="list-group-item">
+                            <div class="row-content" *ngFor="let m of movies">
+                                <div class="list-group-item-heading">
+                                    <a title="movieName">
+                                        <small>Movie Name:- {{m.movieName}}</small>
+                                    </a>
+                                </div>
+                                <small>
+                                    <i class="glyphicon glyphicon-time"></i> Release Year:- {{m.releaseYear}}
+                                    <i class="glyphicon glyphicon-user"></i> Director Name:- {{m.directorName}}
+                                    <br>
+                                    <span class="btn btn-info"><i class="glyphicon glyphicon-th"></i> <a [routerLink]="['/reviews/', m.id]" style="color: black">Movie Reviews:- {{m.noOfReviews}} </a></span>
+                                    <span class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i> <a [routerLink]="['/movies/', m.id]" style="color: black">Edit Movie </a></span>
+                                    <span class="btn btn-success"><i class="glyphicon glyphicon-upload"></i> <a [routerLink]="['/movies/detail/', m.id]" style="color: black">Detail View </a></span>
+                                    <button class="btn btn-danger" data-toggle="confirmation" style="color: black" type="button" (click)="delete(m.id)"><i class="glyphicon glyphicon-remove"></i> Delete Movie</button>
+                                </small>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div *ngIf="showHide" id="loader" style="display: block" align="center">
+                <button class="btn btn-danger btn-lg"><i class="fa fa-refresh fa-spin"></i> Loading Movies</button>
+            </div>
+        </div>
+    </div>
+</form>
+<pager [total-items]="totalMovies" [page-size]="3" (page-changed)="onPageChange($event)"></pager>
