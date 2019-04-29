@@ -19,7 +19,7 @@ namespace MovieReviewSPA.Data
             if (!optionsBuilder.IsConfigured)
             {
                 //While deploying to azure, make sure to change the connection string based on azure settings
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=MovieReviewSPA;Trusted_Connection=True;MultipleActiveResultSets=true;");
+                optionsBuilder.UseSqlServer(@"Server=.\\SQLSERVER;Database=MovieReviewSPA;Trusted_Connection=True;MultipleActiveResultSets=true;");
             }
         }
 
