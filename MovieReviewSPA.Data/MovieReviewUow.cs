@@ -24,16 +24,12 @@ namespace MovieReviewSPA.Data
             DbContext.SaveChanges();
         }
 
-        
-
         protected void CreateDbContext()
         {
             DbContext = new MovieReviewDbContext();
         }
 
-
         protected IRepositoryProvider RepositoryProvider { get; set; }
-
 
         private IRepository<T> GetStandardRepo<T>() where T : class
         {

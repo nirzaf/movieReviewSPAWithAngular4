@@ -26,8 +26,6 @@ namespace MovieReviewSPA.Data
         public MovieReviewDbContext(DbContextOptions<MovieReviewDbContext> options) : base(options)
         {
             //It will look for connection string from appsettings
-
         }
-
     }
 }

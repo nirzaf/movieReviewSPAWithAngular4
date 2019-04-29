@@ -65,14 +65,4 @@ Now, at this moment, when you go and try to see database in localdb, then it wil
 
 ![image.png](https://user-images.githubusercontent.com/3886381/37359839-a366cdee-2714-11e8-9807-aef5e7e1e905.png)
 
-Amazon Link:- http://bit.ly/spa-asp-core
-
-Blog Link:-  https://myview.rahulnivi.net/building-single-page-app-asp-net-core-angular/
-
-Thanks,
-
-Rahul Sahay
-
-Happy Coding
- 
 

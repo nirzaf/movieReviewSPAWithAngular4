@@ -14,6 +14,5 @@ namespace MovieReviewSPA.Model
         [Required]
         public int ReviewerRating { get; set; }
         public int MovieId { get; set; }
-
     }
 }

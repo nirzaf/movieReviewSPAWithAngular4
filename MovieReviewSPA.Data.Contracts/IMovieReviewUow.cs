@@ -8,7 +8,5 @@ namespace MovieReviewSPA.Data.Contracts
         IRepository<Image> Images { get; }
         IRepository<Movie> Movies { get; }
         IRepository<MovieReview> MovieReviews { get; }
-
-
     }
 }

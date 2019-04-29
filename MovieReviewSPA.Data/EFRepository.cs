@@ -12,9 +12,7 @@ namespace MovieReviewSPA.Data
     {
         public EFRepository(DbContext dbContext)
         {
-            if (dbContext == null)
-                throw new ArgumentNullException("dbContext");
-            DbContext = dbContext;
+            DbContext = dbContext ?? throw new ArgumentNullException("dbContext");
             DbSet = DbContext.Set<T>();
         }
 
@@ -47,7 +45,7 @@ namespace MovieReviewSPA.Data
         public virtual void Add(T entity)
         {
             EntityEntry<T> dbEntityEntry = DbContext.Entry(entity);
-            if (dbEntityEntry.State != (EntityState)EntityState.Detached)
+            if (dbEntityEntry.State != EntityState.Detached)
             {
                 dbEntityEntry.State = EntityState.Added;
             }
